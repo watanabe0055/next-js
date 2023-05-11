@@ -28,6 +28,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@storybook/addon-essentials": "^7.0.10",
     "@storybook/addon-interactions": "^7.0.10",
     "@storybook/addon-links": "^7.0.10",
@@ -36,7 +38,13 @@
     "@storybook/react": "^7.0.10",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
     "sb": "^7.0.10",
     "storybook": "^7.0.10"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

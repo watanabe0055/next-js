@@ -17,20 +17,24 @@ type Story = StoryObj<typeof Button>;
 export const Post: Story = {
   args: {
     color: "blue",
-    label: "投稿",
+    label1: "投稿",
+    type: true,
   },
 };
 
 export const Save: Story = {
   args: {
     color: "green",
-    label: "保存",
+    label1: "保存",
+    type: true,
   },
 };
 
 export const Delete: Story = {
   args: {
     color: "red",
-    label: "保存",
+    label1: "削除",
+    label2: "削除2",
+    type: false,
   },
 };

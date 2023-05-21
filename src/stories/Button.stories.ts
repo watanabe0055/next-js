@@ -22,14 +22,6 @@ export const Post: Story = {
   },
 };
 
-export const Save: Story = {
-  args: {
-    color: "green",
-    label1: "保存",
-    type: true,
-  },
-};
-
 export const Delete: Story = {
   args: {
     color: "red",

@@ -1,30 +1,21 @@
-import React from "react";
-import "./button.css";
-
-type ButtonProps = {
-  /**
-   * ボタン内の文字
-   */
+export type ButtonProps = {
+  /**ボタンの文字色 */
+  color: string;
+  /**ボタンの文字 */
   label1: string;
-  /**
-   * ボタン内の文字
-   */
+  /**ボタンの文字 */
   label2?: string;
-  /**
-   * ボタン内の文字色
-   */
-  color?: string;
-  /**
-   * ボタンタイプ
-   */
+  /**ボタンタイプ */
   type?: boolean;
-  onClick?: () => void;
 };
 
-/**
- * Primary UI component for user interaction
+/**ボタンコンポーネント
+ * @params color　ボタン内のテキストの色
+ * @params label1 ボタン内のテキスト
+ * @params label2 ボタン内のテキスト
+ * @params type ボタン内のテキスト
  */
-export const Button = ({
+export const Buttons = ({
   color = "black",
   label1,
   label2,

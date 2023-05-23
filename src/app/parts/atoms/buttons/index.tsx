@@ -22,13 +22,13 @@ export const Buttons = ({
   type,
 }: ButtonProps) => {
   switch (type) {
-    case false:
+    case true:
       return (
-        <div className="flex justify-center p-6 space-x-4 bg-gray-200 shadow-2xl rounded-xl">
-          <button className="px-4 py-2 transition-shadow duration-300 bg-gray-300 shadow-inner rounded-xl hover:shadow-none">
+        <div className="flex justify-center p-2 space-x-4 bg-gray-200 shadow-2xl rounded-xl">
+          <button className="px-4 py-2 transition-shadow duration-300 bg-blue-300 shadow-inner rounded-xl hover:shadow-none">
             {label1}
           </button>
-          <button className="px-4 py-2 transition-shadow duration-300 bg-gray-300 shadow-inner rounded-xl hover:shadow-none">
+          <button className="px-4 py-2 transition-shadow duration-300 bg-red-300 shadow-inner rounded-xl hover:shadow-none">
             {label2}
           </button>
         </div>

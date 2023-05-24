@@ -1,12 +1,13 @@
-import Image from "next/image";
-import { TaskButton } from "./parts/organisms/taskButton";
-import { TaskModule } from "./parts/molecules/taskmodule";
-import { TaskIndex } from "./parts/organisms/taskIndex";
+"use client";
+import { RecoilRoot, useRecoilValue } from "recoil";
+import { TaskIndexTemplate } from "./parts/templates/index";
 
 export default function Home() {
   return (
     <>
-      <TaskIndex />
+      <RecoilRoot>
+        <TaskIndexTemplate />
+      </RecoilRoot>
     </>
   );
 }

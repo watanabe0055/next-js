@@ -10,7 +10,7 @@ type FormData = {
 
 export const TaskModal = () => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
-  const [task, setTask] = useRecoilState(taskState);
+  const [tasks, setTasks] = useRecoilState(taskState);
   const {
     register,
     handleSubmit,
@@ -26,11 +26,12 @@ export const TaskModal = () => {
 
   /**登録できる時はグローバルステートに保存して、モーダルとフォームを閉じる */
   const onSubmit = (data: FormData) => {
-    setTask({
+    const newTask = {
       title: data.taskTitle,
       content: data.taskContent,
       isCompleted: false,
-    });
+    };
+    setTasks([...tasks, newTask]);
     reset();
     setIsModal(!isModal);
   };

@@ -9,14 +9,10 @@ export const TaskIndex = (Props: TaskProps) => {
   const { title, content, isCompleted } = Props;
   return (
     <>
-      <div className="flex justify-center ">
-        <div className="p-2 m-3 bg-green-300 rounded-lg">
-          <TaskModule
-            title={title}
-            content={content}
-            isCompleted={isCompleted}
-          />
+      <div className="p-2 m-3 bg-green-300 rounded-lg">
+        <TaskModule title={title} content={content} isCompleted={isCompleted} />
 
+        <div className="flex justify-center">
           <div className="w-2/5">
             <Buttons
               color={"blue"}

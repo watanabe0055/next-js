@@ -5,5 +5,10 @@ type TitleProps = {
 
 export const Title = (Props: TitleProps) => {
   const { title } = Props;
-  return <div>{title}</div>;
+  return (
+    <div>
+      <h3>タスク概要</h3>
+      <p className="ml-2">{title}</p>
+    </div>
+  );
 };

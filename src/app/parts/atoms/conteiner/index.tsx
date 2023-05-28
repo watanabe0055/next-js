@@ -7,7 +7,7 @@ type AppContainerProps = {
 export const AppContainer: React.FC<AppContainerProps> = (props) => {
   return (
     <>
-      <div>{props.children}</div>
+      <div className="m-3">{props.children}</div>
     </>
   );
 };

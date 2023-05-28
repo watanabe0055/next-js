@@ -5,6 +5,7 @@ import { TaskButton } from "../../organisms/taskButton";
 import { TaskIndex } from "../../organisms/taskIndex";
 import { TaskModal } from "../../atoms/modal";
 import { taskState } from "@/app/lib/atoms/task";
+import { AppContainer } from "../../atoms/conteiner";
 
 export const TaskIndexTemplate = () => {
   const modalFlag = useRecoilValue(modalFlagState);
@@ -12,7 +13,9 @@ export const TaskIndexTemplate = () => {
 
   return (
     <>
-      <TaskButton />
+      <AppContainer>
+        <TaskButton />
+      </AppContainer>
       {tasks.map((task, id) => (
         <TaskIndex
           key={id}

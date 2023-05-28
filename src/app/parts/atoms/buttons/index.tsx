@@ -32,18 +32,29 @@ export const Buttons = ({
   type,
 }: ButtonProps) => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
-  const tasks = useRecoilValue(taskState);
+  const [tasks, setTasks] = useRecoilState(taskState);
 
   const handleClick = () => {
     setIsModal(!isModal);
   };
+
   const handleUpdate = (id: number) => {
     setIsModal(!isModal);
     UpdateTask({ id, tasks });
   };
 
   const handleCompleted = () => {
-    completedTask();
+    console.log(tasks);
+    const isCompleted = completedTask({ id, tasks });
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map((task, index) => {
+        if (index === id) {
+          return { ...task, isCompleted: isCompleted };
+        }
+        return task;
+      });
+      return updatedTasks;
+    });
   };
 
   if (type === true) {

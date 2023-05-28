@@ -18,6 +18,15 @@ export const UpdateTask = (Props: { id: number; tasks: TaskProps[] }) => {
   return null; // 必要に応じて適切な要素を返す
 };
 
-export const completedTask = () => {
-  console.log("comp");
+/**
+ * 解決してるかのフラグを更新進する
+ * @param Props
+ * @returns
+ */
+export const completedTask = (Props: { id: number; tasks: TaskProps[] }) => {
+  const { id, tasks } = Props;
+  const isCompletedTask = !tasks[id].isCompleted;
+  console.log(isCompletedTask);
+
+  return isCompletedTask;
 };

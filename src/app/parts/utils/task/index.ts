@@ -23,10 +23,12 @@ export const UpdateTask = (Props: { id: number; tasks: TaskProps[] }) => {
  * @param Props
  * @returns
  */
-export const completedTask = (Props: { id: number; tasks: TaskProps[] }) => {
+export const completedTask = (Props: {
+  id: number;
+  tasks: TaskProps[];
+}): boolean => {
   const { id, tasks } = Props;
   const isCompletedTask = !tasks[id].isCompleted;
-  console.log(isCompletedTask);
 
   return isCompletedTask;
 };

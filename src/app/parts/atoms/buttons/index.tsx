@@ -1,6 +1,6 @@
 "use client";
 
-import { modalFlagState } from "@/app/lib/atoms/modal";
+import { modalFlagState, modalUpdateFlagState } from "@/app/lib/atoms/modal";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { completedTask, UpdateTask } from "../../utils/task";
@@ -32,19 +32,23 @@ export const Buttons = ({
   type,
 }: ButtonProps) => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
+  const [isUpdateModal, setIsUpdateModal] =
+    useRecoilState(modalUpdateFlagState);
   const [tasks, setTasks] = useRecoilState(taskState);
 
+  /**モーダルを閉じる */
   const handleClick = () => {
     setIsModal(!isModal);
   };
 
+  /**タスクの編集 */
   const handleUpdate = (id: number) => {
-    setIsModal(!isModal);
+    setIsUpdateModal(!isUpdateModal);
     UpdateTask({ id, tasks });
   };
 
+  /** タスクのステータス切り替え */
   const handleCompleted = () => {
-    console.log(tasks);
     const isCompleted = completedTask({ id, tasks });
     setTasks((prevTasks) => {
       const updatedTasks = prevTasks.map((task, index) => {

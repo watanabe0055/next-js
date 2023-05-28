@@ -2,11 +2,12 @@
 
 import { modalFlagState } from "@/app/lib/atoms/modal";
 
-import { useRecoilState } from "recoil";
-import { completedTask, updateTask } from "../../utils/task";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { completedTask, UpdateTask } from "../../utils/task";
+import { taskState } from "@/app/lib/atoms/task";
 
 export type ButtonProps = {
-  id?: number;
+  id: number;
   /**ボタンの文字色 */
   color: string;
   /**ボタンの文字 */
@@ -31,14 +32,14 @@ export const Buttons = ({
   type,
 }: ButtonProps) => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
+  const tasks = useRecoilValue(taskState);
 
   const handleClick = () => {
     setIsModal(!isModal);
   };
-
-  const handleUpdate = () => {
-    updateTask();
-    return;
+  const handleUpdate = (id: number) => {
+    setIsModal(!isModal);
+    UpdateTask({ id, tasks });
   };
 
   const handleCompleted = () => {
@@ -50,7 +51,7 @@ export const Buttons = ({
       <div className="flex justify-center p-2 space-x-4 bg-gray-200 shadow-2xl rounded-xl">
         <button
           className="px-4 py-2 transition-shadow duration-300 bg-blue-300 shadow-inner rounded-xl hover:shadow-none"
-          onClick={handleUpdate}
+          onClick={() => handleUpdate(id)}
         >
           {label1}
         </button>

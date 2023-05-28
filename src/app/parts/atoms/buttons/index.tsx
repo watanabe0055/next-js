@@ -3,8 +3,10 @@
 import { modalFlagState } from "@/app/lib/atoms/modal";
 
 import { useRecoilState } from "recoil";
+import { completedTask, updateTask } from "../../utils/task";
 
 export type ButtonProps = {
+  id?: number;
   /**ボタンの文字色 */
   color: string;
   /**ボタンの文字 */
@@ -22,14 +24,25 @@ export type ButtonProps = {
  * @params type ボタン内のテキスト
  */
 export const Buttons = ({
+  id,
   color = "black",
   label1,
   label2,
   type,
 }: ButtonProps) => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
+
   const handleClick = () => {
     setIsModal(!isModal);
+  };
+
+  const handleUpdate = () => {
+    updateTask();
+    return;
+  };
+
+  const handleCompleted = () => {
+    completedTask();
   };
 
   if (type === true) {
@@ -37,13 +50,13 @@ export const Buttons = ({
       <div className="flex justify-center p-2 space-x-4 bg-gray-200 shadow-2xl rounded-xl">
         <button
           className="px-4 py-2 transition-shadow duration-300 bg-blue-300 shadow-inner rounded-xl hover:shadow-none"
-          onClick={handleClick}
+          onClick={handleUpdate}
         >
           {label1}
         </button>
         <button
           className="px-4 py-2 transition-shadow duration-300 bg-red-300 shadow-inner rounded-xl hover:shadow-none"
-          onClick={handleClick}
+          onClick={handleCompleted}
         >
           {label2}
         </button>

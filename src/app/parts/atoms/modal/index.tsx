@@ -1,7 +1,7 @@
 import { modalFlagState } from "@/app/lib/atoms/modal";
 import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
-import { taskState } from "@/app/lib/atoms/task";
+import { taskCounter, taskState } from "@/app/lib/atoms/task";
 import { AppContainer } from "../conteiner";
 
 type FormData = {
@@ -12,6 +12,8 @@ type FormData = {
 export const TaskModal = () => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
   const [tasks, setTasks] = useRecoilState(taskState);
+  const [taskId, setTaskId] = useRecoilState(taskCounter);
+
   const {
     register,
     handleSubmit,
@@ -27,7 +29,9 @@ export const TaskModal = () => {
 
   /**登録できる時はグローバルステートに保存して、モーダルとフォームを閉じる */
   const onSubmit = (data: FormData) => {
+    setTaskId((prevTaskId) => prevTaskId + 1);
     const newTask = {
+      id: taskId,
       title: data.taskTitle,
       content: data.taskContent,
       isCompleted: false,

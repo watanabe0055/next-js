@@ -6,3 +6,8 @@ export const taskState = atom<TaskProps[]>({
   key: "taskState",
   default: [],
 });
+
+export const taskCounter = atom({
+  key: "taskCounterState",
+  default: 0,
+});

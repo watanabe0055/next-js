@@ -10,12 +10,6 @@ import { TaskProps } from "@/app/types/task";
 export const UpdateTask = (Props: { id: number; tasks: TaskProps[] }) => {
   const { id, tasks } = Props;
   console.log(tasks[id]);
-
-  // tasksを使った処理
-
-  // タスクの更新処理を実装
-
-  return null; // 必要に応じて適切な要素を返す
 };
 
 /**

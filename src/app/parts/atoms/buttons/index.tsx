@@ -36,14 +36,15 @@ export const Buttons = ({
     useRecoilState(modalUpdateFlagState);
   const [tasks, setTasks] = useRecoilState(taskState);
 
-  /**モーダルを閉じる */
+  /**モーダルを開く */
   const handleClick = () => {
     setIsModal(!isModal);
   };
 
   /**タスクの編集 */
   const handleUpdate = (id: number) => {
-    setIsUpdateModal(!isUpdateModal);
+    setIsUpdateModal(true);
+    setIsModal(!isModal);
     UpdateTask({ id, tasks });
   };
 

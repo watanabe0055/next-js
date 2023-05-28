@@ -29,7 +29,7 @@ export const TaskModal = () => {
   /**モーダルを閉じる */
   const handleClickModal = () => {
     setIsModal(!isModal);
-    setIsUpdateModal(!isUpdateModal);
+    setIsUpdateModal(false);
   };
 
   /**登録できる時はグローバルステートに保存して、モーダルとフォームを閉じる */

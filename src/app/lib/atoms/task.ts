@@ -11,3 +11,8 @@ export const taskCounter = atom({
   key: "taskCounterState",
   default: 0,
 });
+
+export const taskSelected = atom({
+  key: "taskSelected",
+  default: [],
+});

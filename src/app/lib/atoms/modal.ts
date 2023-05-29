@@ -6,8 +6,13 @@ export const modalFlagState = atom({
   default: false,
 });
 
-/**モーダル開閉のグローバルステート */
+/**編集モーダル判定フラグ */
 export const modalUpdateFlagState = atom({
   key: "taskUpdateModal",
   default: false,
+});
+
+export const isSelected = atom({
+  key: "isSelectedId",
+  default: 0,
 });

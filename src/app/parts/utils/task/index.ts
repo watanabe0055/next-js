@@ -3,13 +3,16 @@ import { taskState } from "@/app/lib/atoms/task";
 import { TaskProps } from "@/app/types/task";
 
 /**
- * タスクの編集を行う関数
+ * 編集をタップしたタスクのidを返す
  * @param Props {idとタスクの配列}
  * @returns
  */
-export const UpdateTask = (Props: { id: number; tasks: TaskProps[] }) => {
+export const UpdateTask = (Props: {
+  id: number;
+  tasks: TaskProps[];
+}): number => {
   const { id, tasks } = Props;
-  console.log(tasks[id]);
+  return tasks[id].id;
 };
 
 /**

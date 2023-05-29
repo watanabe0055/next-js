@@ -1,8 +1,12 @@
 "use client";
 
-import { modalFlagState, modalUpdateFlagState } from "@/app/lib/atoms/modal";
+import {
+  isSelected,
+  modalFlagState,
+  modalUpdateFlagState,
+} from "@/app/lib/atoms/modal";
 
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { completedTask, UpdateTask } from "../../utils/task";
 import { taskState } from "@/app/lib/atoms/task";
 
@@ -35,6 +39,7 @@ export const Buttons = ({
   const [isUpdateModal, setIsUpdateModal] =
     useRecoilState(modalUpdateFlagState);
   const [tasks, setTasks] = useRecoilState(taskState);
+  const setSelectedTaskId = useSetRecoilState(isSelected);
 
   /**モーダルを開く */
   const handleClick = () => {
@@ -45,7 +50,8 @@ export const Buttons = ({
   const handleUpdate = (id: number) => {
     setIsUpdateModal(true);
     setIsModal(!isModal);
-    UpdateTask({ id, tasks });
+    const taskId = UpdateTask({ id, tasks });
+    setSelectedTaskId(taskId);
   };
 
   /** タスクのステータス切り替え */
@@ -62,7 +68,7 @@ export const Buttons = ({
     });
   };
 
-  if (type === true) {
+  if (type) {
     return (
       <div className="flex justify-center p-2 space-x-4 bg-gray-200 shadow-2xl rounded-xl">
         <button

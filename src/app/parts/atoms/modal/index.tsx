@@ -1,4 +1,8 @@
-import { modalFlagState, modalUpdateFlagState } from "@/app/lib/atoms/modal";
+import {
+  isSelected,
+  modalFlagState,
+  modalUpdateFlagState,
+} from "@/app/lib/atoms/modal";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useForm } from "react-hook-form";
 import { taskCounter, taskState } from "@/app/lib/atoms/task";
@@ -13,10 +17,13 @@ export const TaskModal = () => {
   const [isModal, setIsModal] = useRecoilState(modalFlagState);
   const [isUpdateModal, setIsUpdateModal] =
     useRecoilState(modalUpdateFlagState);
-
   const isUpdateFlag = useRecoilValue(modalUpdateFlagState);
+  // タスクの配列
   const [tasks, setTasks] = useRecoilState(taskState);
+  //タスクのidのカウンター
   const [taskId, setTaskId] = useRecoilState(taskCounter);
+  /**編集をタップしたタスク */
+  const selectedTaskId = useRecoilValue(isSelected);
 
   const {
     register,
@@ -74,6 +81,7 @@ export const TaskModal = () => {
                 </label>
                 <input
                   {...register("taskTitle", { required: true })}
+                  defaultValue={tasks[selectedTaskId].title}
                   className="w-full min-w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 {errors.taskTitle && (
@@ -89,6 +97,7 @@ export const TaskModal = () => {
                 </label>
                 <input
                   {...register("taskContent", { required: true })}
+                  defaultValue={tasks[selectedTaskId].content}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 {errors.taskContent && (

@@ -16,12 +16,13 @@ export const TaskIndexTemplate = () => {
       <AppContainer>
         <TaskButton />
       </AppContainer>
-      {tasks.map((task, id) => (
+      {tasks.map((task) => (
         <TaskIndex
-          key={id}
+          key={task.id}
           title={task.title}
           content={task.content}
           isCompleted={task.isCompleted}
+          id={task.id}
         />
       ))}
       {modalFlag && <TaskModal />}

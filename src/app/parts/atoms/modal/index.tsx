@@ -40,7 +40,7 @@ export const TaskModal = () => {
   };
 
   /**登録できる時はグローバルステートに保存して、モーダルとフォームを閉じる */
-  const onSubmit = (data: FormData) => {
+  const onCreateSubmit = (data: FormData) => {
     setTaskId((prevTaskId) => prevTaskId + 1);
     const newTask = {
       id: taskId,
@@ -49,6 +49,20 @@ export const TaskModal = () => {
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
+    reset();
+    setIsModal(!isModal);
+  };
+
+  /**登録できる時はグローバルステートに保存して、モーダルとフォームを閉じる */
+  const handleUpdateSubmit = (data: FormData) => {
+    const updatedTask = {
+      ...tasks[selectedTaskId],
+      title: data.taskTitle,
+      content: data.taskContent,
+    };
+    const updatedTasks = [...tasks];
+    updatedTasks[selectedTaskId] = updatedTask;
+    setTasks(updatedTasks);
     reset();
     setIsModal(!isModal);
   };
@@ -71,7 +85,7 @@ export const TaskModal = () => {
               </button>
             </div>
             <p className="mb-4">更新するタスクを入力してください</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(handleUpdateSubmit)}>
               <AppContainer>
                 <label
                   htmlFor="my-input"
@@ -126,7 +140,7 @@ export const TaskModal = () => {
               </button>
             </div>
             <p className="mb-4">登録するタスクを入力してください</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onCreateSubmit)}>
               <AppContainer>
                 <label
                   htmlFor="my-input"

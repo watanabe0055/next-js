@@ -24,7 +24,7 @@ export const TaskIndex = (Props: TaskProps) => {
               id={id}
               color={"blue"}
               label1={"編集"}
-              label2={"削除"}
+              label2={isCompleted ? "未完了" : "完了"}
               type={true}
             />
           </div>
